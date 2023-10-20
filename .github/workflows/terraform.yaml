@@ -6,7 +6,7 @@ on:
 env:
   AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  TERRAFORM_ACTION: apply
+  TERRAFORM_ACTION: destroy
   AWS_REGION: us-east-1
   ECR_REPOSITORY: my-sample-app           
   ECS_SERVICE: my_ecs_cluster_service 
