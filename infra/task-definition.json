@@ -1,5 +1,8 @@
 {
     "family":"my_task",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
     "containerDefinitions": [
       {
         "name": "my_task",
