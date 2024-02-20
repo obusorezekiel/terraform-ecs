@@ -3,6 +3,7 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
+    "networkMode": "awsvpc",
     "containerDefinitions": [
       {
         "name": "my_task",
