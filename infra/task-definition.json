@@ -1,4 +1,5 @@
-[
+container_definitions    = <<DEFINITION
+  [
     {
       "name": "my_task",
       "image": "my-sample-app",
@@ -12,4 +13,6 @@
       "memory": 512,
       "cpu": 256
     }
-]
+  ]
+
+DEFINITION
