@@ -8,7 +8,7 @@ resource "aws_ecs_task_definition" "my_sample_task" {
   [
     {
       "name": "my_task",
-      "image": "${aws_ecr_repository.my-sample-app.repository_url}",
+      "image": "my-sample-app",
       "essential": true,
       "portMappings": [
         {

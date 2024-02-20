@@ -11,7 +11,7 @@ env:
   ECR_REPOSITORY: my-sample-app           
   ECS_SERVICE: my_ecs_cluster_service 
   ECS_CLUSTER: my_ecs_cluster                 
-  ECS_TASK_DEFINITION: my_task 
+  ECS_TASK_DEFINITION: infra/task-definition.json 
                                                
   CONTAINER_NAME: my_task 
 
@@ -28,48 +28,48 @@ jobs:
           aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }} 
           aws-region: ${{ env.AWS_REGION }}
 
-  deploy_aws_infra:
-    name: "Build Infra"
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./infra
+  # deploy_aws_infra:
+  #   name: "Build Infra"
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #       working-directory: ./infra
     
-    steps:
-      - name: Checkout to repository
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Checkout to repository
+  #       uses: actions/checkout@v2
 
-      - name: Setup Terraform with specified version
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.4.0
+  #     - name: Setup Terraform with specified version
+  #       uses: hashicorp/setup-terraform@v2
+  #       with:
+  #         terraform_version: 1.4.0
 
-      - name: Terraform init
-        id: init
-        run: terraform init
+  #     - name: Terraform init
+  #       id: init
+  #       run: terraform init
 
-      - name: Terraform format
-        id: fmt
-        run: terraform fmt
+  #     - name: Terraform format
+  #       id: fmt
+  #       run: terraform fmt
 
-      - name: Terraform validate
-        id: validate
-        run: terraform validate
+  #     - name: Terraform validate
+  #       id: validate
+  #       run: terraform validate
 
-      - name: Terraform plan
-        id: plan
-        run: terraform plan
+  #     - name: Terraform plan
+  #       id: plan
+  #       run: terraform plan
 
-      - name: Terraform apply/destroy
-        id: apply-destroy
-        run: terraform ${{ env.TERRAFORM_ACTION }} --auto-approve
+  #     - name: Terraform apply/destroy
+  #       id: apply-destroy
+  #       run: terraform ${{ env.TERRAFORM_ACTION }} --auto-approve
     
   push_application_to_container:
     name: "Push Application"
     needs: 
       - configure_aws_credentials
-      - deploy_aws_infra
+      #- deploy_aws_infra
     runs-on: ubuntu-latest
     defaults:
       run:
