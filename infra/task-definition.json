@@ -1,18 +1,18 @@
-container_definitions    = <<DEFINITION
-  [
-    {
-      "name": "my_task",
-      "image": "my-sample-app",
-      "essential": true,
-      "portMappings": [
-        {
-          "containerPort": 5000,
-          "hostPort": 5000
-        }
-      ],
-      "memory": 512,
-      "cpu": 256
-    }
-  ]
-
-DEFINITION
+{
+    "containerDefinitions": [
+      {
+        "name": "my_task",
+        "image": "my-sample-app",
+        "essential": true,
+        "portMappings": [
+          {
+            "containerPort": 5000,
+            "hostPort": 5000
+          }
+        ],
+        "memory": 512,
+        "cpu": 256
+      }
+    ]
+}
+  
